@@ -21,6 +21,8 @@ public class LoggController {
         frame.setVisible(true);
         frame.getRootPane().setDefaultButton(view.getAddButton());
 
+
+
         view.getAddButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,6 +34,8 @@ public class LoggController {
                 view.clearNewEntry();
             }
         });
+
+
 
         view.getSaveButton().addActionListener(new ActionListener() {
             @Override
@@ -63,6 +67,12 @@ public class LoggController {
                 } catch (IOException | ClassNotFoundException ex) {
                     ex.printStackTrace();
                 }
+
+                DefaultListModel<String> listModel = new DefaultListModel<>();
+                for (int i = 0; i < model.getFullLoggBook().size(); i++) {
+                    listModel.addElement(model.getFullLoggBook().get(i).getMessage());
+                }
+                view.setList1(listModel);
             }
         });
     }
