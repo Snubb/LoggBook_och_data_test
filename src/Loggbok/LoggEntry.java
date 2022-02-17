@@ -1,8 +1,9 @@
 package Loggbok;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class LoggEntry {
+public class LoggEntry  implements Serializable {
     private Date createdAt;
     private Date updatedAt;
     private String name;
@@ -13,5 +14,19 @@ public class LoggEntry {
         this.updatedAt = new Date();
         this.name = name;
         this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    @Override
+    public String toString() {
+        return "LoggEntry{" +
+                "createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", name='" + name + '\'' +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

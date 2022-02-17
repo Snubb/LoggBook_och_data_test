@@ -37,9 +37,10 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="17f51" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+          <component id="17f51" class="javax.swing.JTextArea" binding="loggBookDisplay">
             <constraints/>
             <properties>
+              <editable value="false"/>
               <lineWrap value="true"/>
             </properties>
           </component>
@@ -65,6 +66,10 @@
             <properties>
               <text value="Open"/>
             </properties>
+          </component>
+          <component id="8bed7" class="javax.swing.JList" binding="list1" default-binding="true">
+            <constraints/>
+            <properties/>
           </component>
         </children>
       </toolbar>

@@ -5,11 +5,20 @@ import javax.swing.*;
 public class LoggView {
     private JButton AddButton;
     private JTextField NewEntry;
-    private JTextArea textArea1;
+    private JTextArea loggBookDisplay;
     private JPanel panel1;
     private JButton saveButton;
     private JButton openButton;
     private JToolBar toolBar;
+    private JList list1;
+
+    public JList getList1() {
+        return list1;
+    }
+
+    public void setList1(JList list1) {
+        this.list1 = list1;
+    }
 
     public JPanel getPanel1() {
         return panel1;
@@ -32,11 +41,11 @@ public class LoggView {
     }
 
     public JTextArea getTextArea1() {
-        return textArea1;
+        return loggBookDisplay;
     }
 
     public void setTextArea1(String text) {
-        this.textArea1.setText(text);
+        this.loggBookDisplay.setText(text);
     }
 
     public void clearNewEntry() {
