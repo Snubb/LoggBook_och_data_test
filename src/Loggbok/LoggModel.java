@@ -20,7 +20,7 @@ public class LoggModel {
 
     public String selectFile() {
         String filePath = "";
-        JFileChooser fc = new JFileChooser();
+        JFileChooser fc = new JFileChooser("C:\\Code\\Java-pgm-1\\DataFranURLTest");
         int result = 0;
         result = fc.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
