@@ -19,6 +19,7 @@ public class LoggController {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.getRootPane().setDefaultButton(view.getAddButton());
 
         view.getAddButton().addActionListener(new ActionListener() {
             @Override
