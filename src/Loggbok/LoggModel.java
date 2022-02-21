@@ -1,6 +1,7 @@
 package Loggbok;
 
 import javax.swing.*;
+import java.io.*;
 import java.util.ArrayList;
 
 public class LoggModel {
@@ -29,6 +30,32 @@ public class LoggModel {
             System.out.println("CHOOSE FILE BASTARD");
         }
         return filePath;
+    }
+
+    public void writeFile() {
+        try {
+            String filename = selectFile();
+            ObjectOutputStream outs = new ObjectOutputStream(new FileOutputStream(filename));
+            outs.writeObject(fullLoggBook);
+            outs.flush();
+            outs.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public ArrayList<LoggEntry> openFile() {
+        ArrayList<LoggEntry> logg = new ArrayList<>();
+        try {
+            String filename = selectFile();
+            ObjectInputStream ins = new ObjectInputStream(new FileInputStream(filename));
+            logg = (ArrayList<LoggEntry>) ins.readObject();
+            setFullLoggBook(logg);
+            ins.close();
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return logg;
     }
 
     public LoggModel() {}

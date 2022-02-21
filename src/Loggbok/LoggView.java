@@ -1,6 +1,10 @@
 package Loggbok;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class LoggView {
     private JButton AddButton;
@@ -10,6 +14,7 @@ public class LoggView {
     private JButton saveButton;
     private JButton openButton;
     private JToolBar toolBar;
+    private JComboBox comboBox1;
     private JList list1;
 
     public JList getList1() {
@@ -19,6 +24,17 @@ public class LoggView {
     public void setList1(DefaultListModel model) {
         this.list1.setModel(model);
 
+    }
+
+    public void clearDropDown() {
+        this.comboBox1.removeAllItems();
+        this.comboBox1.addItem("Show all");
+    }
+
+    public void buildDropDown(ArrayList<LoggEntry> loggEntries) {
+        for (LoggEntry loggEntry : loggEntries) {
+            this.comboBox1.addItem(loggEntry.getMessage());
+        }
     }
 
     public JPanel getPanel1() {
@@ -49,9 +65,17 @@ public class LoggView {
         this.loggBookDisplay.setText(text);
     }
 
+    public void openFile(ArrayList<LoggEntry> loggEntries){
+        for (LoggEntry loggEntry : loggEntries) {
+            setTextArea1(this.loggBookDisplay.getText() + loggEntry.getMessage() + "\n");
+        }
+    }
+
     public void clearNewEntry() {
         this.NewEntry.setText("");
     }
 
-    public LoggView() { }
+    public JComboBox getComboBox1() {
+        return comboBox1;
+    }
 }
