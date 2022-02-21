@@ -3,7 +3,6 @@ package Loggbok;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
 import java.util.ArrayList;
 
 public class LoggController {
@@ -13,7 +12,6 @@ public class LoggController {
     public LoggController() {
         model = new LoggModel();
         view = new LoggView();
-        ArrayList<LoggEntry> loggEntries = new ArrayList<>();
 
         JFrame frame = new JFrame("notepadView");
         frame.setContentPane(view.getPanel1());
@@ -22,7 +20,7 @@ public class LoggController {
         frame.setVisible(true);
         frame.getRootPane().setDefaultButton(view.getAddButton());
 
-
+        view.getEditButton().setEnabled(false);
 
         view.getAddButton().addActionListener(new ActionListener() {
             @Override
@@ -45,7 +43,7 @@ public class LoggController {
         view.getComboBox1().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                view.buildComboBox(model.getFullLoggBook());
+                view.comboBoxAction(model.getFullLoggBook());
             }
         });
 
@@ -56,6 +54,13 @@ public class LoggController {
                 view.setTextArea1("");
                 view.clearDropDown();
                 view.buildDropDown(logg);
+            }
+        });
+
+        view.getEditButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }

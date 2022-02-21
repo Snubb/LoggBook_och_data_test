@@ -38,6 +38,10 @@ public class LoggView {
         }
     }
 
+    public JButton getEditButton() {
+        return editButton;
+    }
+
     public JPanel getPanel1() {
         return panel1;
     }
@@ -66,13 +70,15 @@ public class LoggView {
         this.loggBookDisplay.setText(text);
     }
 
-    public void buildComboBox(ArrayList<LoggEntry> loggEntries) {
+    public void comboBoxAction(ArrayList<LoggEntry> loggEntries) {
         setTextArea1("");
         if (this.comboBox1.getSelectedItem() == "Show all") {
             openFile(loggEntries);
+            this.editButton.setEnabled(false);
         } else {
             for (int i = 0; i < loggEntries.size(); i++) {
                 if (loggEntries.get(i).getMessage().equals(this.comboBox1.getSelectedItem())) {
+                    this.editButton.setEnabled(true);
                     setTextArea1("Author: " + loggEntries.get(i).getName() + "\n" +
                             "Message: " + loggEntries.get(i).getMessage() + "\n" +
                             "Updated at: " + loggEntries.get(i).getUpdatedAt() + "\n" +
