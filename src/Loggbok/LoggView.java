@@ -15,6 +15,7 @@ public class LoggView {
     private JButton openButton;
     private JToolBar toolBar;
     private JComboBox comboBox1;
+    private JButton editButton;
     private JList list1;
 
     public JList getList1() {
@@ -63,6 +64,23 @@ public class LoggView {
 
     public void setTextArea1(String text) {
         this.loggBookDisplay.setText(text);
+    }
+
+    public void buildComboBox(ArrayList<LoggEntry> loggEntries) {
+        setTextArea1("");
+        if (this.comboBox1.getSelectedItem() == "Show all") {
+            openFile(loggEntries);
+        } else {
+            for (int i = 0; i < loggEntries.size(); i++) {
+                if (loggEntries.get(i).getMessage().equals(this.comboBox1.getSelectedItem())) {
+                    setTextArea1("Author: " + loggEntries.get(i).getName() + "\n" +
+                            "Message: " + loggEntries.get(i).getMessage() + "\n" +
+                            "Updated at: " + loggEntries.get(i).getUpdatedAt() + "\n" +
+                            "Created at: " + loggEntries.get(i).getCreatedAt());
+                    break;
+                }
+            }
+        }
     }
 
     public void openFile(ArrayList<LoggEntry> loggEntries){

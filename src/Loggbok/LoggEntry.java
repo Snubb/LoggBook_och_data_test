@@ -20,6 +20,18 @@ public class LoggEntry  implements Serializable {
         return message;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
     @Override
     public String toString() {
         return "LoggEntry{" +

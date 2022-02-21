@@ -45,21 +45,7 @@ public class LoggController {
         view.getComboBox1().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // UNDER CONSTRUCTION
-                if (view.getComboBox1().getSelectedItem().toString() == "Show all") {
-                    for (LoggEntry loggEntry : loggEntries) {
-                        view.setTextArea1(view.getTextArea1().getText() + loggEntry.getMessage() + "\n");
-                    }
-                } else {
-                    int index = 0;
-                    for (int i = 0; i < model.getFullLoggBook().size(); i++) {
-                        if (model.getFullLoggBook().get(i).getMessage().equals(view.getComboBox1().getSelectedItem().toString())) {
-                            index = i;
-                            break;
-                        }
-                    }
-
-                }
+                view.buildComboBox(model.getFullLoggBook());
             }
         });
 
@@ -70,7 +56,6 @@ public class LoggController {
                 view.setTextArea1("");
                 view.clearDropDown();
                 view.buildDropDown(logg);
-                view.openFile(logg);
             }
         });
     }

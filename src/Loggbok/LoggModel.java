@@ -58,5 +58,15 @@ public class LoggModel {
         return logg;
     }
 
+    public String getFullLogg(int index) {
+
+        String fullLogg = "Author: " + fullLoggBook.get(index).getName() + "\n" +
+                    "Message: " + fullLoggBook.get(index).getMessage() + "\n" +
+                    "Updated at: " + fullLoggBook.get(index).getUpdatedAt() + "\n" +
+                    "Created at: " + fullLoggBook.get(index).getCreatedAt();
+
+        return fullLogg;
+    }
+
     public LoggModel() {}
 }
