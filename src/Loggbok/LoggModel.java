@@ -58,6 +58,12 @@ public class LoggModel {
         return logg;
     }
 
+    public void editLogg(JComboBox comboBox) {
+        LoggEntry oldLogg = new LoggEntry(getFullLoggBook().get(comboBox.getSelectedIndex()));
+        System.out.println(oldLogg);
+        getFullLoggBook().get(comboBox.getSelectedIndex()).editMessage(JOptionPane.showInputDialog("New message:"), oldLogg);
+    }
+
     public String getFullLogg(int index) {
 
         String fullLogg = "Author: " + fullLoggBook.get(index).getName() + "\n" +

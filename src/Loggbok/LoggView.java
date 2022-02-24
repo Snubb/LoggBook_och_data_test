@@ -81,11 +81,15 @@ public class LoggView {
             this.editButton.setEnabled(false);
         } else {
             this.editButton.setEnabled(true);
-            setTextArea1("Author: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getName() + "\n" +
-                    "Message: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getMessage() + "\n" +
-                    "Updated at: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getUpdatedAt() + "\n" +
-                    "Created at: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getCreatedAt() + "\n" +
-                    "Update history: \n" + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getUpdateHistory());
+            try {
+                setTextArea1("Author: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getName() + "\n" +
+                        "Message: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getMessage() + "\n" +
+                        "Updated at: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getUpdatedAt() + "\n" +
+                        "Created at: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getCreatedAt() + "\n" +
+                        "Update history: \n" + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getUpdateHistory());
+            } catch (Exception e) {
+                //e.printStackTrace();
+            }
         }
     }
 

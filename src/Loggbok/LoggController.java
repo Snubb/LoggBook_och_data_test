@@ -61,7 +61,6 @@ public class LoggController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LoggEntry oldLogg = new LoggEntry(model.getFullLoggBook().get(view.getComboBox1().getSelectedIndex()));
-                System.out.println(oldLogg);
                 model.getFullLoggBook().get(view.getComboBox1().getSelectedIndex()).editMessage(JOptionPane.showInputDialog("New message:"), oldLogg);
                 view.setTextArea1("");
                 view.clearDropDown();
