@@ -34,7 +34,11 @@ public class LoggView {
 
     public void buildDropDown(ArrayList<LoggEntry> loggEntries) {
         for (LoggEntry loggEntry : loggEntries) {
-            this.comboBox1.addItem(loggEntry.getMessage());
+            if (loggEntry.getMessage().length() > 20) {
+                this.comboBox1.addItem(loggEntry.getMessage().substring(0, 19) + "...");
+            } else {
+                this.comboBox1.addItem(loggEntry.getMessage());
+            }
         }
     }
 
@@ -76,17 +80,12 @@ public class LoggView {
             openFile(loggEntries);
             this.editButton.setEnabled(false);
         } else {
-            for (int i = 0; i < loggEntries.size(); i++) {
-                if (loggEntries.get(i).getMessage().equals(this.comboBox1.getSelectedItem())) {
-                    this.editButton.setEnabled(true);
-                    setTextArea1("Author: " + loggEntries.get(i).getName() + "\n" +
-                            "Message: " + loggEntries.get(i).getMessage() + "\n" +
-                            "Updated at: " + loggEntries.get(i).getUpdatedAt() + "\n" +
-                            "Created at: " + loggEntries.get(i).getCreatedAt() + "\n" +
-                            "Update history: \n" + loggEntries.get(i).getUpdateHistory());
-                    break;
-                }
-            }
+            this.editButton.setEnabled(true);
+            setTextArea1("Author: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getName() + "\n" +
+                    "Message: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getMessage() + "\n" +
+                    "Updated at: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getUpdatedAt() + "\n" +
+                    "Created at: " + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getCreatedAt() + "\n" +
+                    "Update history: \n" + loggEntries.get(this.comboBox1.getSelectedIndex() - 1).getUpdateHistory());
         }
     }
 
