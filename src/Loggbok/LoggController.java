@@ -60,7 +60,17 @@ public class LoggController {
         view.getEditButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                for (int i = 0; i < model.getFullLoggBook().size(); i++) {
+                    if (model.getFullLoggBook().get(i).getMessage().equals(view.getComboBox1().getSelectedItem())) {
+                        LoggEntry oldLogg = new LoggEntry(model.getFullLoggBook().get(i));
+                        System.out.println(oldLogg);
+                        model.getFullLoggBook().get(i).editMessage(JOptionPane.showInputDialog("New message:"), oldLogg);
+                        view.setTextArea1("");
+                        view.clearDropDown();
+                        view.buildDropDown(model.getFullLoggBook());
+                        break;
+                    }
+                }
             }
         });
     }

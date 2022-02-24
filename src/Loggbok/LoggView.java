@@ -72,7 +72,7 @@ public class LoggView {
 
     public void comboBoxAction(ArrayList<LoggEntry> loggEntries) {
         setTextArea1("");
-        if (this.comboBox1.getSelectedItem() == "Show all") {
+        if (this.comboBox1.getSelectedIndex() == 0) {
             openFile(loggEntries);
             this.editButton.setEnabled(false);
         } else {
@@ -82,7 +82,8 @@ public class LoggView {
                     setTextArea1("Author: " + loggEntries.get(i).getName() + "\n" +
                             "Message: " + loggEntries.get(i).getMessage() + "\n" +
                             "Updated at: " + loggEntries.get(i).getUpdatedAt() + "\n" +
-                            "Created at: " + loggEntries.get(i).getCreatedAt());
+                            "Created at: " + loggEntries.get(i).getCreatedAt() + "\n" +
+                            "Update history: \n" + loggEntries.get(i).getUpdateHistory());
                     break;
                 }
             }
