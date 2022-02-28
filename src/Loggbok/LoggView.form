@@ -70,6 +70,14 @@
               <text value="Open"/>
             </properties>
           </component>
+          <component id="c6bd9" class="javax.swing.JTextField" binding="nameField">
+            <constraints/>
+            <properties>
+              <enabled value="true"/>
+              <text value=""/>
+              <toolTipText value=""/>
+            </properties>
+          </component>
           <component id="623b5" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
             <constraints/>
             <properties/>

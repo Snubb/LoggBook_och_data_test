@@ -7,8 +7,14 @@ import java.util.ArrayList;
 public class LoggModel {
     ArrayList<LoggEntry> fullLoggBook = new ArrayList<>();
 
-    public void addEntry(String message) {
-        fullLoggBook.add(new LoggEntry("Oliver", message));
+    public boolean addEntry(String message, String name) {
+        if (name.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Must input name");
+            return false;
+        } else {
+            fullLoggBook.add(new LoggEntry(name, message));
+            return true;
+        }
     }
 
     public ArrayList<LoggEntry> getFullLoggBook() {

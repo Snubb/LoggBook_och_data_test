@@ -25,9 +25,13 @@ public class LoggController {
         view.getAddButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                view.setTextArea1(view.getTextArea1().getText() + view.getNewEntry().getText() + "\n");
-                model.addEntry(view.getNewEntry().getText());
-                view.clearNewEntry();
+                if (model.addEntry(view.getNewEntry().getText(), view.getNameField().getText())) {
+                    view.setTextArea1(view.getTextArea1().getText() + view.getNewEntry().getText() + "\n");
+                    view.clearNewEntry();
+                    view.setTextArea1("");
+                    view.clearDropDown();
+                    view.buildDropDown(model.getFullLoggBook());
+                }
             }
         });
 
@@ -60,8 +64,8 @@ public class LoggController {
         view.getEditButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoggEntry oldLogg = new LoggEntry(model.getFullLoggBook().get(view.getComboBox1().getSelectedIndex()));
-                model.getFullLoggBook().get(view.getComboBox1().getSelectedIndex()).editMessage(JOptionPane.showInputDialog("New message:"), oldLogg);
+                LoggEntry oldLogg = new LoggEntry(model.getFullLoggBook().get(view.getComboBox1().getSelectedIndex() - 1));
+                model.getFullLoggBook().get(view.getComboBox1().getSelectedIndex() - 1).editMessage(JOptionPane.showInputDialog("New message:"), oldLogg);
                 view.setTextArea1("");
                 view.clearDropDown();
                 view.buildDropDown(model.getFullLoggBook());

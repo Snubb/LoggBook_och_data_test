@@ -16,6 +16,7 @@ public class LoggView {
     private JToolBar toolBar;
     private JComboBox comboBox1;
     private JButton editButton;
+    private JTextField nameField;
     private JList list1;
 
     public JList getList1() {
@@ -105,5 +106,9 @@ public class LoggView {
 
     public JComboBox getComboBox1() {
         return comboBox1;
+    }
+
+    public JTextField getNameField() {
+        return nameField;
     }
 }
